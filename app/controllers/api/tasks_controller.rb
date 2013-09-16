@@ -3,7 +3,7 @@ class Api::TasksController < Api::ApiController
   before_filter :authenticate_user!
 
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order(created_at: :asc)
     respond_with :api, @tasks
   end
 

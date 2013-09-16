@@ -15,6 +15,7 @@
 //= require angular
 //= require angular-resource
 //= require main
+//= require form_controls
 //= require_tree ./controllers
 //= require_tree ./directives
 //= require_tree ./factories

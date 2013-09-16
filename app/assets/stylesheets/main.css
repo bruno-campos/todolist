@@ -1,0 +1,22 @@
+h1 {
+    color: #FFFFFF;
+    font-size: 48px;
+}
+
+hr {
+    color: #AAA;
+    background-color: #AAA;
+    height: 1px;
+}
+
+body {
+    background-color: #02839b;
+}
+
+.page-body {
+    background-color: #EFEFEF;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
