@@ -11,7 +11,6 @@ describe Api::SessionsController do
         post :create, {login: user.login, password: "111"}
         json = JSON.parse(response.body)
         json["success"].should == false
-        json["error"].should_not be_nil
       end
     end
 

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h3>Sign in</h3>
+    <form class="form" id="form_sign_in" ng-submit="sign_in()">
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newSession.login" placeholder="Login" required />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" ng-model="newSession.password" placeholder="Password" required />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Sign in</button>
+    </form>
+
+    <hr/>
+
+    <h3>Don't have an account? Create one now</h3>
+    <form class="form" id="form_sign_up" ng-submit="sign_up(this)">
+      <div class="form-group controls-login">
+        <input type="text" class="form-control" ng-model="newUser.login" placeholder="Login"  />
+      </div>
+      <div class="form-group controls-password">
+        <input type="password" class="form-control" ng-model="newUser.password" placeholder="Password"  />
+      </div>
+      <div class="form-group controls-password_confirmation">
+        <input type="password" class="form-control" ng-model="newUser.password_confirmation" placeholder="Password confirmation"  />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+    </form>
+  </div>
+</div>

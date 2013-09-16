@@ -5,12 +5,9 @@ class Api::UsersController < Api::ApiController
 
   def create
     @user = User.new(user_params)
-    #if @user.save
-    #  render json: {success: true, user: @user}
-    #else
-    #  render json: {success: false, user: @user, errors: @user.errors}
-    #end
     @user.save
+    # Sign in user after creating it
+    session[:user_id] = @user.id
     respond_with :api, @user
   end
 

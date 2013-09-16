@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Todolist</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html ng-app="todoApp">
+  <head>
+    <title>Todolist</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body ng-controller="MainController">
 
-<%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center"><h1>Todo list</h1></div>
+      </div>
+      <div ng-view></div>
+    </div>
 
-</body>
+  </body>
 </html>

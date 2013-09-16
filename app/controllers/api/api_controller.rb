@@ -11,7 +11,7 @@ class Api::ApiController < ApplicationController
   layout      false
 
   def authenticate_user!
-    unless user_signed_in?
+    unless current_user.present?
       render json: {success: false, message: "Invalid user data."}, status: :unauthorized
     end
   end
@@ -22,7 +22,7 @@ class Api::ApiController < ApplicationController
     user_login = params[:user_login].presence
     user       = user_login && User.find_by(login: user_login)
     if user && user.api_key == params[:api_key]
-      session[:user_id] = user.id
+      @current_user ||= User.find(user.id)
     end
   end
 

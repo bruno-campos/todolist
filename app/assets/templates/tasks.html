@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>My tasks</h3>
+
+    <div>
+      <div>
+        <h4>Create a new task</h4>
+        <form class="form" ng-submit="create()">
+          <select ng-model="newTask.priority">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <input type="text" ng-model="newTask.name" />
+          <button type="submit">Create</button>
+        </form>
+      </div>
+
+      <div ng-repeat="task in tasks | orderBy: 'priority':true | filter: {completed: false}">
+        <input type="checkbox" ng-model="task.completed" ng-change="update(task)" />
+        <select ng-model="task.priority" ng-change="update(task)">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <input type="text" ng-model="task.name" ng-model-onblur ng-change="update(task)" />
+      </div>
+
+      <div ng-repeat="task in tasks | filter: {completed: true}">
+        <input type="checkbox" ng-model="task.completed" ng-change="update(task)" />
+        <select ng-model="task.priority" ng-change="update(task)">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <input type="text" ng-model="task.name" ng-model-onblur ng-change="update(task)" />
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <button type="button" ng-click="sign_out()">Sign out</button>
+  </div>
+</div>

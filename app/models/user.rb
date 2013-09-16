@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   private
 
   def generate_api_key
-    self.api_key = SecureRandom.base64(15)
+    self.api_key = SecureRandom.urlsafe_base64(15)
     if User.where(api_key: self.api_key).present?
       generate_api_key
     end
