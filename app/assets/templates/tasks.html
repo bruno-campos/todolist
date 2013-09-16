@@ -1,48 +1,58 @@
 <div class="row">
-  <div class="col-md-12">
-    <h3>My tasks</h3>
+  <div class="col-md-8 col-md-offset-2">
 
     <div>
-      <div>
-        <h4>Create a new task</h4>
-        <form class="form" ng-submit="create()">
-          <select ng-model="newTask.priority">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <input type="text" ng-model="newTask.name" />
-          <button type="submit">Create</button>
-        </form>
-      </div>
+      <h3>My tasks</h3>
 
-      <div ng-repeat="task in tasks | orderBy: 'priority':true | filter: {completed: false}">
-        <input type="checkbox" ng-model="task.completed" ng-change="update(task)" />
-        <select ng-model="task.priority" ng-change="update(task)">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <input type="text" ng-model="task.name" ng-model-onblur ng-change="update(task)" />
-      </div>
+      <table style="width: 100%;">
+        <tr ng-repeat="task in tasks | orderBy: 'priority':true | filter: {completed: false}">
+          <td style="width:20px;"><input type="checkbox" ng-model="task.completed" ng-change="update(task)" /></td>
+          <td style="width:160px;">
+            <select class="form-control" ng-model="task.priority" ng-change="update(task)">
+              <option value="0">No priority</option>
+              <option value="1">Low</option>
+              <option value="2">Medium</option>
+              <option value="3">High</option>
+            </select>
+          </td>
+          <td><input class="form-control" type="text" ng-model="task.name" ng-model-onblur ng-change="update(task)" /></td>
+        </tr>
+      </table>
+      <hr/>
+      <form class="form" ng-submit="create()">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:20px"></td>
+            <td style="width:160px">
+              <select class="form-control" ng-model="newTask.priority">
+                <option value="">No priority</option>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+              </select>
+            </td>
+            <td>
+              <input class="form-control" type="text" ng-model="newTask.name" placeholder="Type new task name here and press <enter> or create button" />
+            </td>
+            <td style="width: 100px;">
+              <button class="btn btn-default btn-block" type="submit">Create</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
 
+    <div style="margin-top: 40px;">
+      <h4>Completed tasks</h4>
       <div ng-repeat="task in tasks | filter: {completed: true}">
         <input type="checkbox" ng-model="task.completed" ng-change="update(task)" />
-        <select ng-model="task.priority" ng-change="update(task)">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <input type="text" ng-model="task.name" ng-model-onblur ng-change="update(task)" />
+        <span>{{task.name}}</span>
       </div>
     </div>
 
-  </div>
+    <div style="margin-top: 40px;">
+      <small class="text-muted">Logged in as LOGIN (<a href="javascript:;" ng-click="sign_out()">sign out</a>)</small>
+    </div>
 
-  <div>
-    <button type="button" ng-click="sign_out()">Sign out</button>
   </div>
 </div>

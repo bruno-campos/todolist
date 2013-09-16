@@ -4,6 +4,8 @@ angular.module("todoApp").controller("TasksController", ["$scope", "$http", "Tas
   $scope.create = function() {
     var new_task = Task.save({}, {task: $scope.newTask}, function(data) {
       $scope.tasks.push(new_task);
+      $scope.newTask.priority = null;
+      $scope.newTask.name = "";
     }, function(error_data) {
       alert("An error occurred.")
     });

@@ -6,6 +6,7 @@ class Api::ApiController < ApplicationController
   before_filter :default_format_json
 
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  rescue_from Exception,                    :with => :exception
 
   respond_to  :json
   layout      false
@@ -27,7 +28,11 @@ class Api::ApiController < ApplicationController
   end
 
   def record_not_found
-    render :json => {error: "Resource not found."}, :status => :not_found
+    render json: {error: "Resource not found."}, status: :not_found
+  end
+
+  def exception(ex)
+    render json: {message: ex.message}, status: 500
   end
 
   def default_format_json
