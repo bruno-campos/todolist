@@ -2,7 +2,7 @@ class Api::SessionsController < Api::ApiController
 
   def index
     if user_signed_in?
-      respond_with current_user
+      render json: {user: current_user}
     else
       render json: {user_signed_in: "false"}, status: :not_found
     end

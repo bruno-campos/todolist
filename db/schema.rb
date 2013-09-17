@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20130913211406) do
 
   create_table "tasks", force: true do |t|
-    t.integer  "user_id"
-    t.string   "name"
+    t.integer  "user_id",                     null: false
+    t.string   "name",                        null: false
     t.text     "description"
     t.integer  "priority",    default: 0,     null: false
     t.boolean  "completed",   default: false, null: false

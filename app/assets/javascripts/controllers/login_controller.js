@@ -3,8 +3,8 @@ angular.module("todoApp").controller("LoginController", ["$scope", "$location", 
     FormControls.clearErrors("#form_sign_in");
     Session.save($scope.newSession, function(data) {
       $location.path("/tasks");
+      $scope.setUserData(data.user);
     }, function(error_data) {
-      console.log(error_data);
       FormControls.showMessage("#form_sign_in", error_data.data.message, "danger");
     });
   };
@@ -13,6 +13,7 @@ angular.module("todoApp").controller("LoginController", ["$scope", "$location", 
     FormControls.clearErrors("#form_sign_up");
     User.save({}, {user: $scope.newUser}, function(data) {
       $location.path("/tasks");
+      $scope.setUserData(data);
     }, function(error_data) {
       FormControls.showMessage("#form_sign_up", "Some errors occurred.", "danger");
       FormControls.addErrors("#form_sign_up", error_data.data.errors);

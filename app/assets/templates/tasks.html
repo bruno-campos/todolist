@@ -51,7 +51,11 @@
     </div>
 
     <div style="margin-top: 40px;">
-      <small class="text-muted">Logged in as LOGIN (<a href="javascript:;" ng-click="sign_out()">sign out</a>)</small>
+      <small class="text-muted">
+        Logged in as {{current_user.login}}
+        (<a href="javascript:;" onclick="$('#s_api_key').show(); $(this).hide();">show api key</a><span id="s_api_key" style="display: none;">{{current_user.api_key}}</span>
+        | <a href="javascript:;" ng-click="sign_out()">sign out</a>)
+      </small>
     </div>
 
   </div>

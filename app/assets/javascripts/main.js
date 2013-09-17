@@ -17,7 +17,7 @@ angular.module("todoApp").config(function ($provide, $httpProvider) {
   $httpProvider.responseInterceptors.push('httpInterceptor');
 });
 
-angular.module("todoApp").config(function($routeProvider, $locationProvider) {
+angular.module("todoApp").config(function($routeProvider) {
   $routeProvider
       .when("/login", {
         templateUrl: "assets/login.html",
@@ -26,22 +26,11 @@ angular.module("todoApp").config(function($routeProvider, $locationProvider) {
       .when("/tasks", {
         templateUrl: "assets/tasks.html",
         controller: "TasksController"
-      })
-      .otherwise({redirectTo: "/tasks"});
+      });
+      //.otherwise({redirectTo: "/tasks"});
 });
 
 angular.module("todoApp").config(function($httpProvider) {
   var authToken = $('meta[name="csrf-token"]').attr("content");
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
 });
-
-angular.module("todoApp").factory("Session", ["$resource", function($resource) {
-  return $resource("/api/sessions");
-}]);
-
-angular.module("todoApp").service("UserSession", ["$http", "$q", "Session", function($http, $q, Session) {
-  var logged_in = false;
-  return {
-
-  };
-}]);
